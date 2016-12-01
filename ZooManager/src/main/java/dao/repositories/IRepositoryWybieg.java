@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package zarzad;
+package dao.repositories;
 
+import java.util.List;
 
 /**
  *
  * @author TKK
  */
-public class Boss {
-    
+public interface IRepositoryWybieg {
+
+
+    public List<dao.model.Wybieg> pobierzListeWybiegow(dao.model.Zwierze zwierze);
 }

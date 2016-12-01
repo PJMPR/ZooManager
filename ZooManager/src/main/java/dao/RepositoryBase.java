@@ -15,7 +15,7 @@ import dao.uow.IUnitOfWork;
 import dao.uow.Entity;
 import dao.uow.IUnitOfWorkRepository;
 
-public abstract class RepositoryBase<TEntity extends IHaveId> implements
+public abstract class RepositoryBase<TEntity> implements
 		IRepository<TEntity>, IUnitOfWorkRepository{
 
 	protected Connection connection;
@@ -100,7 +100,7 @@ public abstract class RepositoryBase<TEntity extends IHaveId> implements
 		try {
 			TEntity ent = (TEntity) entity.getEntity();
 			setUpdate(ent);
-			update.setInt(3, ent.getId());
+//			update.setInt(3, ent.getId());
 			update.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -118,7 +118,7 @@ public abstract class RepositoryBase<TEntity extends IHaveId> implements
 
 	public void persistDelete(Entity entity) {
 		try {
-			delete.setInt(1, ((TEntity) entity.getEntity()).getId());
+			//delete.setInt(1, ((TEntity) entity.getEntity()).getId());
 			delete.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

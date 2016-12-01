@@ -4,7 +4,7 @@ import java.util.List;
 
 import dao.model.IHaveId;
 
-public interface IRepository<TEntity extends IHaveId> {
+public interface IRepository<TEntity> {
 
 	public List<TEntity> getAll();
 

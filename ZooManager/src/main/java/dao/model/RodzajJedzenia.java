@@ -3,19 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package wybieg;
+package dao.model;
 
 /**
  *
  * @author TKK
  */
-public class Wybieg {
-private RodzajWybiegu rodzajWybiegu;
-    private String kod;
-
-    public enum RodzajWybiegu {
-
-        KLATKA, ZAMKNIETY, OTWARTY
-    }
+public enum RodzajJedzenia {
+    
+    WOLOWINA,KONINA,SIANO,KISZONKA
     
 }

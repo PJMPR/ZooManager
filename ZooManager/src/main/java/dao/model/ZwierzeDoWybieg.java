@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package zwierzeta;
+package dao.model;
 
 /**
  *
  * @author TKK
  */
-public enum RodzajJedzenia {
+public class ZwierzeDoWybieg {
     
-    WOLOWINA,KONINA,SIANO,KISZONKA
-    
+    private Integer idZwierze;
+    private Integer idWybieg;
+
 }

@@ -5,8 +5,8 @@
  */
 package dao;
 
-import Pracownicy.APracownik;
-import Pracownicy.TYP_PRACOWNIKA;
+import dao.model.APracownik;
+import dao.model.TYP_PRACOWNIKA;
 import dao.mappers.IMapResultSetIntoEntity;
 import dao.uow.IUnitOfWork;
 import java.sql.Connection;
@@ -28,7 +28,7 @@ public class PracownikRepository extends RepositoryBase<APracownik> {
     protected String insertSql() {
         return "Insert into "
                 + tableName()
-                + " (imie, nazwisko, pensja, id_typ_pracownika)"
+                + " (imie, nazwisko, pensja, typ_pracownika)"
                 + " values (?,?,?,?)";
     }
 
@@ -36,7 +36,7 @@ public class PracownikRepository extends RepositoryBase<APracownik> {
     protected String updateSql() {
         return "update "
                 + tableName()
-                + " set (imie, nazwisko, pensja, id_typ_pracownika) ="
+                + " set (imie, nazwisko, pensja, typ_pracownika) ="
                 + "(?,?,?,?) "
                 + "where "
                 + "id = ?";
@@ -47,7 +47,7 @@ public class PracownikRepository extends RepositoryBase<APracownik> {
         update.setString(1, entity.getImie());
         update.setString(2, entity.getNazwisko());
         update.setDouble(3, entity.getPensja());
-        update.setInt(4, entity.getTypPracownika().getId());
+        update.setString(4, entity.getTypPracownika().toString());
     }
 
     @Override
@@ -55,7 +55,7 @@ public class PracownikRepository extends RepositoryBase<APracownik> {
         insert.setString(1, entity.getImie());
         insert.setString(2, entity.getNazwisko());
         insert.setDouble(3, entity.getPensja());
-        insert.setInt(4, entity.getTypPracownika().getId());
+        insert.setString(4, entity.getTypPracownika().toString());
     }
 
     @Override
@@ -66,8 +66,7 @@ public class PracownikRepository extends RepositoryBase<APracownik> {
                 + " imie varchar(20),"
                 + " nazwisko varchar(20),"
                 + " pensja double,"
-                + " id_typ_pracownika int,"
-                + "foreign key (id_typ_pracownika) references typ_pracownika(id))";
+                + " typ_pracownika varchar(20))";
     }
 
     @Override

@@ -5,8 +5,8 @@
  */
 package dao.mappers;
 
-import zwierzeta.Zwierze;
-import zwierzeta.RodzajJedzenia;
+import dao.model.Zwierze;
+import dao.model.RodzajJedzenia;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

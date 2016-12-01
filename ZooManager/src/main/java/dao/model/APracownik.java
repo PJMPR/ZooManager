@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Pracownicy;
+package dao.model;
 
 import dao.model.IHaveId;
 
@@ -16,10 +16,10 @@ public class APracownik implements IHaveId {
     private static double PENJSA_PODSTAWOWA = 1200;
 
     protected final int id;
-    protected final String imie;
-    protected final String nazwisko;
+    protected String imie;
+    protected String nazwisko;
     protected double pensja;
-    protected final TYP_PRACOWNIKA typPracownika;
+    protected TYP_PRACOWNIKA typPracownika;
 
     public APracownik(int id, String imie, String nazwisko, double penjsa, TYP_PRACOWNIKA typPracownika) {
         this.id = id;
