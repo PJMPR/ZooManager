@@ -20,11 +20,11 @@ import java.util.List;
  *
  * @author TKK
  */
-public class ZierzetaRepository extends RepositoryBase<Zwierze> implements IRepositoryZwierze {
+public class ZwierzetaRepository extends RepositoryBase<Zwierze> implements IRepositoryZwierze {
 
     private final String TABLE_NAME = "zwierzeta";
 
-    public ZierzetaRepository(Connection connection, IMapResultSetIntoEntity<Zwierze> mapper, IUnitOfWork uow) {
+    public ZwierzetaRepository(Connection connection, IMapResultSetIntoEntity<Zwierze> mapper, IUnitOfWork uow) {
         super(connection, mapper, uow);
     }
 
@@ -77,6 +77,10 @@ public class ZierzetaRepository extends RepositoryBase<Zwierze> implements IRepo
     @Override
     public List<Zwierze> getByName(String name) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void insertNecessaryData() {
     }
 
 }

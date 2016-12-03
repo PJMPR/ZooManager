@@ -74,4 +74,8 @@ public class PracownikRepository extends RepositoryBase<APracownik> {
         return TABLE_NAME;
     }
 
+    @Override
+    protected void insertNecessaryData() {
+    }
+
 }

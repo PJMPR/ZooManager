@@ -18,7 +18,8 @@ public class ZwierzeMapper implements IMapResultSetIntoEntity<Zwierze> {
 
     @Override
     public Zwierze map(ResultSet rs) throws SQLException {
-        return new Zwierze(rs.getInt("id"), rs.getString("nazwa"));
+       // return new Zwierze(rs.getInt("id"), rs.getString("nazwa"));
+       return null;
     }
 
 }

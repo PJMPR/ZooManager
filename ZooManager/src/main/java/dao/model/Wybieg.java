@@ -13,29 +13,41 @@ import dao.model.IHaveId;
  */
 public class Wybieg implements IHaveId {
 
-    private RodzajWybiegu rodzajWybiegu;
     private Integer id;
+    private Integer idRodzajWybiegu;
+    private String stanWybiegu;
 
-    public enum RodzajWybiegu {
-
-        KLATKA, ZAMKNIETY, OTWARTY
-    }
+    
 
     @Override
     public int getId() {
         return id;
     }
 
-    public RodzajWybiegu getRodzajWybiegu() {
-        return rodzajWybiegu;
+    public Integer getRodzajWybiegu() {
+        return idRodzajWybiegu;
     }
 
-    public void setRodzajWybiegu(RodzajWybiegu rodzajWybiegu) {
-        this.rodzajWybiegu = rodzajWybiegu;
+    public void setRodzajWybiegu(Integer rodzajWybiegu) {
+        this.idRodzajWybiegu = rodzajWybiegu;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Wybieg(Integer id, Integer idRodzajWybiegu, String stanWybiegu) {
+        this.id = id;
+        this.idRodzajWybiegu = idRodzajWybiegu;
+        this.stanWybiegu = stanWybiegu;
+    }
+
+    public Integer getIdRodzajWybiegu() {
+        return idRodzajWybiegu;
+    }
+
+    public String getStanWybiegu() {
+        return stanWybiegu;
     }
     
     

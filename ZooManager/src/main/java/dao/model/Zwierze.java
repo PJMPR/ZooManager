@@ -19,22 +19,22 @@ public class Zwierze implements IHaveId {
     private int tempoJedzenia;
     private Integer poziomNajedzenia;
     private List<RodzajJedzenia> rodzajJedzenia;
-    private List<Wybieg.RodzajWybiegu> rodzajWybiegu;
+    private List<TypWybiegu.RodzajWybiegu> rodzajWybiegu;
 
-    public Zwierze(Integer id, String nazwa) {
-        this.id = id;
-        this.nazwa = nazwa;
-    }
-
-    public Zwierze(Integer kod, String nazwa, int tempoJedzenia, List<RodzajJedzenia> rodzajJedzenia, int poziomNajedzenia) {
-        this.id = kod;
-        this.nazwa = nazwa;
-        this.tempoJedzenia = tempoJedzenia;
-        this.rodzajJedzenia = rodzajJedzenia;
-        this.poziomNajedzenia = poziomNajedzenia;
-        pobierzListeTypJedzenia();
-        pobierzListeTypWybiegu();
-    }
+//    public Zwierze(Integer id, String nazwa) {
+//        this.id = id;
+//        this.nazwa = nazwa;
+//    }
+//
+//    public Zwierze(Integer kod, String nazwa, int tempoJedzenia, List<RodzajJedzenia> rodzajJedzenia, int poziomNajedzenia) {
+//        this.id = kod;
+//        this.nazwa = nazwa;
+//        this.tempoJedzenia = tempoJedzenia;
+//        this.rodzajJedzenia = rodzajJedzenia;
+//        this.poziomNajedzenia = poziomNajedzenia;
+//        pobierzListeTypJedzenia();
+//        pobierzListeTypWybiegu();
+//    }
 
     private void pobierzListeTypJedzenia() {
 
