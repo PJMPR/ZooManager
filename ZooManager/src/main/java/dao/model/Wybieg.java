@@ -17,6 +17,17 @@ public class Wybieg implements IHaveId {
     private Integer idRodzajWybiegu;
     private String stanWybiegu;
 
+    public void setIdRodzajWybiegu(Integer idRodzajWybiegu) {
+        this.idRodzajWybiegu = idRodzajWybiegu;
+    }
+
+    public void setStanWybiegu(String stanWybiegu) {
+        this.stanWybiegu = stanWybiegu;
+    }
+
+    public Wybieg() {
+    }
+
     
 
     @Override
@@ -36,11 +47,6 @@ public class Wybieg implements IHaveId {
         this.id = id;
     }
 
-    public Wybieg(Integer id, Integer idRodzajWybiegu, String stanWybiegu) {
-        this.id = id;
-        this.idRodzajWybiegu = idRodzajWybiegu;
-        this.stanWybiegu = stanWybiegu;
-    }
 
     public Integer getIdRodzajWybiegu() {
         return idRodzajWybiegu;

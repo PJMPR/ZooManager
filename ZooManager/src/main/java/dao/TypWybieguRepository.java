@@ -17,24 +17,32 @@ import java.sql.SQLException;
  */
 public class TypWybieguRepository extends RepositoryBase<TypWybiegu> {
 
+    public static final String TABLE_NAME = "typ_wybiegu";
+
     public TypWybieguRepository(Connection connection, IMapResultSetIntoEntity<TypWybiegu> mapper, IUnitOfWork uow) {
         super(connection, mapper, uow);
     }
 
     @Override
     protected String insertSql() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+return "insert into "
+        + tableName()
+        +" (id, typ_wybiegu) values"
+        + "(?,?)";
+        }
 
     @Override
     protected String updateSql() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+return "update "
+        + tableName()
+        + "set (typ_wybiegu) ="
+        + "(?) where"
+        + " id = ?";}
 
     @Override
     protected void setUpdate(TypWybiegu entity) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+update.setString(1, entity.getRodzajWybiegu().toString());
+update.setInt(2, entity.getId());    }
 
     @Override
     protected void setInsert(TypWybiegu entity) throws SQLException {
@@ -42,21 +50,24 @@ public class TypWybieguRepository extends RepositoryBase<TypWybiegu> {
         insert.setString(2, entity.getRodzajWybiegu().toString());
 //wyciagniecie enuma na podstawie string
 //TypWybiegu.RodzajWybiegu.valueOf(entity.getRodzajWybiegu().toString());
-        
+
     }
 
     @Override
     protected String createTableSql() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "create table "
+                + tableName()
+                + " (id int identity primary key,"
+                + " typ_wybiegu varchar(20))";
     }
 
     @Override
     protected String tableName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return TABLE_NAME;
     }
 
     @Override
-    protected void insertNecessaryData() {
+    protected void insertNecessaryData() throws SQLException {
         for (TypWybiegu.RodzajWybiegu param : TypWybiegu.RodzajWybiegu.values()) {
             add(new TypWybiegu(param));
         }

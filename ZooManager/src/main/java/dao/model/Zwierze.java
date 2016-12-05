@@ -18,23 +18,63 @@ public class Zwierze implements IHaveId {
     private static final int MAX_NAJEDZENIE = 100;
     private int tempoJedzenia;
     private Integer poziomNajedzenia;
-    private List<RodzajJedzenia> rodzajJedzenia;
+    private List<TypJedzenia.RodzajJedzenia> rodzajJedzenia;
     private List<TypWybiegu.RodzajWybiegu> rodzajWybiegu;
+    private Integer idWybiegu;
 
-//    public Zwierze(Integer id, String nazwa) {
-//        this.id = id;
-//        this.nazwa = nazwa;
-//    }
-//
-//    public Zwierze(Integer kod, String nazwa, int tempoJedzenia, List<RodzajJedzenia> rodzajJedzenia, int poziomNajedzenia) {
-//        this.id = kod;
-//        this.nazwa = nazwa;
-//        this.tempoJedzenia = tempoJedzenia;
-//        this.rodzajJedzenia = rodzajJedzenia;
-//        this.poziomNajedzenia = poziomNajedzenia;
-//        pobierzListeTypJedzenia();
-//        pobierzListeTypWybiegu();
-//    }
+   
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
+    }
+
+    public void setTempoJedzenia(int tempoJedzenia) {
+        this.tempoJedzenia = tempoJedzenia;
+    }
+
+    public void setPoziomNajedzenia(Integer poziomNajedzenia) {
+        this.poziomNajedzenia = poziomNajedzenia;
+    }
+
+    public void setRodzajJedzenia(List<TypJedzenia.RodzajJedzenia> rodzajJedzenia) {
+        this.rodzajJedzenia = rodzajJedzenia;
+    }
+
+    public void setRodzajWybiegu(List<TypWybiegu.RodzajWybiegu> rodzajWybiegu) {
+        this.rodzajWybiegu = rodzajWybiegu;
+    }
+
+    public void setIdWybiegu(Integer idWybiegu) {
+        this.idWybiegu = idWybiegu;
+    }
+
+    public String getNazwa() {
+        return nazwa;
+    }
+
+    public static int getMAX_NAJEDZENIE() {
+        return MAX_NAJEDZENIE;
+    }
+
+    public int getTempoJedzenia() {
+        return tempoJedzenia;
+    }
+
+    public List<TypJedzenia.RodzajJedzenia> getRodzajJedzenia() {
+        return rodzajJedzenia;
+    }
+
+    public List<TypWybiegu.RodzajWybiegu> getRodzajWybiegu() {
+        return rodzajWybiegu;
+    }
+
+    public Integer getIdWybiegu() {
+        return idWybiegu;
+    }
 
     private void pobierzListeTypJedzenia() {
 
@@ -43,7 +83,7 @@ public class Zwierze implements IHaveId {
     private void pobierzListeTypWybiegu() {
     }
 
-    public boolean jedz(Integer ilosc, RodzajJedzenia jedzenie) {
+    public boolean jedz(Integer ilosc, TypJedzenia.RodzajJedzenia jedzenie) {
         // sprawdzam poziom najedzenia i rodzaj jedzenia
         if (poziomNajedzenia < MAX_NAJEDZENIE) {
             if (rodzajJedzenia.contains(jedzenie)) {

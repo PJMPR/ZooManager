@@ -13,6 +13,11 @@ public class TypWybiegu implements IHaveId {
 
     RodzajWybiegu rodzajWybiegu;
 
+    
+    
+    public TypWybiegu() {
+    }
+
 
     @Override
     public int getId() {

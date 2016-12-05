@@ -45,7 +45,7 @@ public abstract class RepositoryBase<TEntity extends IHaveId> implements
             delete = connection.prepareStatement(deleteSql());
             selectAll = connection.prepareStatement(selectAllSql());
             //funkcja dla tabeli slownikowych (z naszych enum)
-            insertNecessaryData();
+        insertNecessaryData();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -178,5 +178,5 @@ public abstract class RepositoryBase<TEntity extends IHaveId> implements
 
     protected abstract String tableName();
 
-    protected abstract void insertNecessaryData();
+    protected abstract void insertNecessaryData() throws SQLException;
 }
