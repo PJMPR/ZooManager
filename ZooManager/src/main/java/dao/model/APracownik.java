@@ -19,9 +19,9 @@ public class APracownik implements IHaveId {
     protected String imie;
     protected String nazwisko;
     protected double pensja;
-    protected TYP_PRACOWNIKA typPracownika;
+    protected Typ_Pracownika typPracownika;
 
-    public APracownik(int id, String imie, String nazwisko, double penjsa, TYP_PRACOWNIKA typPracownika) {
+    public APracownik(int id, String imie, String nazwisko, double penjsa, Typ_Pracownika typPracownika) {
         this.id = id;
         this.imie = imie;
         this.nazwisko = nazwisko;
@@ -30,7 +30,7 @@ public class APracownik implements IHaveId {
         
     }
 
-    public APracownik(int id, String imie, String nazwisko, TYP_PRACOWNIKA typPracownika) {
+    public APracownik(int id, String imie, String nazwisko, Typ_Pracownika typPracownika) {
         this.id = id;
         this.imie = imie;
         this.nazwisko = nazwisko;
@@ -64,7 +64,7 @@ public class APracownik implements IHaveId {
         return this.pensja;
     }
 
-    public TYP_PRACOWNIKA getTypPracownika() {
+    public Typ_Pracownika getTypPracownika() {
         return typPracownika;
     }
     

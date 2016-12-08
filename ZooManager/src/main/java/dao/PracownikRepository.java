@@ -6,7 +6,7 @@
 package dao;
 
 import dao.model.APracownik;
-import dao.model.TYP_PRACOWNIKA;
+import dao.model.Typ_Pracownika;
 import dao.mappers.IMapResultSetIntoEntity;
 import dao.uow.IUnitOfWork;
 import java.sql.Connection;

@@ -9,7 +9,7 @@ package dao.model;
  *
  * @author TKK
  */
-public class ZwierzeDoTypJedzenia implements IHaveId{
+public class ZwierzeDoTypJedzenia implements IHaveId {
 
     private Integer id;
     private Integer idZwierze;
@@ -28,11 +28,10 @@ public class ZwierzeDoTypJedzenia implements IHaveId{
     public Integer getIdTypJedzenia() {
         return idTypJedzenia;
     }
-    
-    
-    
+
     @Override
     public int getId() {
-return id;    }
-    
+        return id;
+    }
+
 }

@@ -37,7 +37,7 @@ public class TypJedzeniaRepository extends RepositoryBase<TypJedzenia> {
         return "update "
                 + tableName()
                 + " set (typ_jedzenia) ="
-                + "(?)"
+                + " (?)"
                 + " where id =?";
     }
 

@@ -55,6 +55,12 @@ public class Wybieg implements IHaveId {
     public String getStanWybiegu() {
         return stanWybiegu;
     }
+
+    public Wybieg(Integer id, Integer idRodzajWybiegu, String stanWybiegu) {
+        this.id = id;
+        this.idRodzajWybiegu = idRodzajWybiegu;
+        this.stanWybiegu = stanWybiegu;
+    }
     
     
 

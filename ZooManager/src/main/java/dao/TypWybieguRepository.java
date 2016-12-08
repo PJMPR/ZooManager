@@ -35,7 +35,7 @@ return "insert into "
     protected String updateSql() {
 return "update "
         + tableName()
-        + "set (typ_wybiegu) ="
+        + " set (typ_wybiegu) ="
         + "(?) where"
         + " id = ?";}
 

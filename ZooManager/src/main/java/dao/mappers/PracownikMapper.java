@@ -6,7 +6,7 @@
 package dao.mappers;
 
 import dao.model.APracownik;
-import dao.model.TYP_PRACOWNIKA;
+import dao.model.Typ_Pracownika;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -23,7 +23,7 @@ public class PracownikMapper implements IMapResultSetIntoEntity<APracownik> {
         String imie = rs.getString("imie");
         String nazwisko = rs.getString("nazwisko");
         Double pensja = rs.getDouble("pensja");
-        TYP_PRACOWNIKA typPracownika = TYP_PRACOWNIKA.valueOf(rs.getString("typ_pracownika"));
+        Typ_Pracownika typPracownika = Typ_Pracownika.valueOf(rs.getString("typ_pracownika"));
 
 //        return new APracownik(int id, imie, nazwisko, 0, TYP_PRACOWNIKA.TECHNICZNY)
         //wyciagamy typ pracownika z enum przez ztring wiec po zmianach switch jest zbedny

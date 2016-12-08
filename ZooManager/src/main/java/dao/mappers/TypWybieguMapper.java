@@ -17,12 +17,12 @@ public class TypWybieguMapper implements IMapResultSetIntoEntity<TypWybiegu> {
 
     @Override
     public TypWybiegu map(ResultSet rs) throws SQLException {
-        TypWybiegu naszEnum = new TypWybiegu();
+        TypWybiegu typWybiegu = new TypWybiegu();
         
         //TypWybiegu.RodzajWybiegu.valueOf(rs.getString("typ_wybiegu"));
         
-        naszEnum.setRodzajWybiegu(TypWybiegu.RodzajWybiegu.valueOf(rs.getString("typ_wybiegu")));
-        return naszEnum;
+        typWybiegu.setRodzajWybiegu(TypWybiegu.RodzajWybiegu.valueOf(rs.getString("typ_wybiegu")));
+        return typWybiegu;
     }
 
 }

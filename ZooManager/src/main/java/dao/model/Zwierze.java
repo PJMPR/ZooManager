@@ -111,4 +111,18 @@ public class Zwierze implements IHaveId {
         return id;
     }
 
+    public Zwierze(Integer id, String nazwa, int tempoJedzenia, Integer poziomNajedzenia, List<TypJedzenia.RodzajJedzenia> rodzajJedzenia, List<TypWybiegu.RodzajWybiegu> rodzajWybiegu, Integer idWybiegu) {
+        this.id = id;
+        this.nazwa = nazwa;
+        this.tempoJedzenia = tempoJedzenia;
+        this.poziomNajedzenia = poziomNajedzenia;
+        this.rodzajJedzenia = rodzajJedzenia;
+        this.rodzajWybiegu = rodzajWybiegu;
+        this.idWybiegu = idWybiegu;
+    }
+
+    public Zwierze() {
+    }
+    
+
 }

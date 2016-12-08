@@ -14,6 +14,7 @@ import dao.model.IHaveId;
 import dao.uow.IUnitOfWork;
 import dao.uow.Entity;
 import dao.uow.IUnitOfWorkRepository;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 public abstract class RepositoryBase<TEntity extends IHaveId> implements
         IRepository<TEntity>, IUnitOfWorkRepository {
@@ -65,12 +66,15 @@ public abstract class RepositoryBase<TEntity extends IHaveId> implements
         return null;
     }
 
-    public TEntity get(int personId) {
+    public TEntity get(int id) {
         try {
-            selectById.setInt(1, personId);
+            selectById.setInt(1, id);
             ResultSet rs = selectById.executeQuery();
             while (rs.next()) {
-                return mapper.map(rs);
+                TEntity newTEntity = mapper.map(rs);
+                addMoreData(newTEntity);
+                return newTEntity;
+                
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -113,8 +117,14 @@ public abstract class RepositoryBase<TEntity extends IHaveId> implements
         try {
             setInsert((TEntity) entity.getEntity());
             insert.executeUpdate();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (SQLIntegrityConstraintViolationException ex) {
+            //obsluga bledu powtarzajacego sie PK
+            System.err.println("dao.RepositoryBase.persistAdd()");
+             System.err.println("Tutaj bład bo inserty do tabeli enumow");
+            System.err.println(this.getClass());
+            System.err.println(((TEntity) entity.getEntity()).getId());
+        } catch (SQLException sqexp){
+            sqexp.printStackTrace();
         }
     }
 
@@ -179,4 +189,8 @@ public abstract class RepositoryBase<TEntity extends IHaveId> implements
     protected abstract String tableName();
 
     protected abstract void insertNecessaryData() throws SQLException;
+    
+    protected void addMoreData(TEntity entity){
+        //Nothing to do
+    }
 }
