@@ -6,6 +6,7 @@
 package com.mycompany.zoomanager_projekt_pjwstk;
 
 import dao.PracownikRepository;
+import dao.RepositoryCatalogue;
 import dao.TypJedzeniaRepository;
 import dao.TypWybieguRepository;
 import dao.WybiegRepository;
@@ -37,50 +38,22 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Connection connection = null;
-        try {
-            connection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb");
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        
+        RepositoryCatalogue repos;
+        try{
+         repos = new RepositoryCatalogue();
+        }catch(SQLException e){
+            e.printStackTrace();
+            return;
         }
-
-        UnitOfWork zwierzetaUnitWork = new UnitOfWork(connection);
-        TypJedzeniaRepository typRepo = new TypJedzeniaRepository(connection, new TypJedzeniaMapper(), new UnitOfWork(connection));
-        TypWybieguRepository jedzRepo = new TypWybieguRepository(connection, new TypWybieguMapper(), new UnitOfWork(connection));
-            WybiegRepository wybiegRepo = new WybiegRepository(connection, new WybiegMapper(), new UnitOfWork(connection));
-        ZwierzeDoTypJedzeniaRepository zwDoJedz = new ZwierzeDoTypJedzeniaRepository(connection, new ZwierzeDoTypJedzMapper(), new UnitOfWork(connection));
-        ZwierzeDoTypWybieguRepository zwDoWyb = new ZwierzeDoTypWybieguRepository(connection, new ZwierzeDoTypWybMapper(), new UnitOfWork(connection));
-        ZwierzetaRepository zwierzeRepo = new ZwierzetaRepository(connection, new ZwierzeMapper(), new UnitOfWork(connection));
-        PracownikRepository pracownikRepo = new PracownikRepository(connection, new PracownikMapper(), new UnitOfWork(connection));
-            
-//        
-//        Wybieg wybieg1 = new Wybieg(1, 3, "1");
-//        Zwierze zwierze1 = new Zwierze(1, "Miau", 6, 100, null, null, 354);
-//        
-//        wybiegRepo.add(wybieg1);
-//        wybiegRepo.getUnitWork().saveChanges();
-//        zwierzeRepo.add(zwierze1);
-//        zwierzeRepo.getUnitWork().saveChanges();
+        
+        repos.wybiegRepository();
         
         
-        Zwierze newZw1 = zwierzeRepo.get(2);
-        Zwierze newZw2 = newZw1;
+        repos.save();
+        repos.close();
         
-//
-//        Zwierze zweirzeObiekt = new Zwierze();
-//        
-//       
-//        zwierzeRepo.add(zweirzeObiekt);
-//        zwierzeRepo.delete(zweirzeObiekt);
-
-        zwierzeRepo.getUnitWork().saveChanges();
         
-         try {
-            connection.close();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        // TODO code application logic here
     }
 
 }
