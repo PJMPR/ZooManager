@@ -5,6 +5,7 @@
  */
 package dao.mappers;
 
+import dao.model.RodzajJedzenia;
 import dao.model.TypJedzenia;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +26,7 @@ public class TypJedzeniaMapper implements IMapResultSetIntoEntity<TypJedzenia> {
         
        //TypJedzenia.RodzajJedzenia.valueOf(nazwaEnum);
         
-        typJedzenia.setRodzajJedzenia(TypJedzenia.RodzajJedzenia.valueOf(nazwaEnum));
+        typJedzenia.setRodzajJedzenia(RodzajJedzenia.valueOf(nazwaEnum));
         
         
         return typJedzenia;

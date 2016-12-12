@@ -6,20 +6,26 @@
 package dao;
 
 import dao.mappers.IMapResultSetIntoEntity;
-import dao.model.ZwierzeDoWybieg;
+import dao.model.TypWybiegu;
+import dao.model.ZwierzeDoTypWybiegu;
+import dao.repositories.IZwierzeDoTypWybiegu;
 import dao.uow.IUnitOfWork;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author TKK
  */
-public class ZwierzeDoTypWybieguRepository extends RepositoryBase<ZwierzeDoWybieg> {
+public class ZwierzeDoTypWybieguRepository extends RepositoryBase<ZwierzeDoTypWybiegu> implements IZwierzeDoTypWybiegu {
 
     private static final String TABLE_NAME = "zwierze_do_typ_wybiegu";
 
-    public ZwierzeDoTypWybieguRepository(Connection connection, IMapResultSetIntoEntity<ZwierzeDoWybieg> mapper, IUnitOfWork uow) {
+    public ZwierzeDoTypWybieguRepository(Connection connection, IMapResultSetIntoEntity<ZwierzeDoTypWybiegu> mapper, IUnitOfWork uow) {
         super(connection, mapper, uow);
     }
 
@@ -41,17 +47,17 @@ public class ZwierzeDoTypWybieguRepository extends RepositoryBase<ZwierzeDoWybie
     }
 
     @Override
-    protected void setUpdate(ZwierzeDoWybieg entity) throws SQLException {
-    update.setInt(1, entity.getIdZwierze());
-    update.setInt(2, entity.getIdWybieg());
-    update.setInt(3, entity.getId());
-        
+    protected void setUpdate(ZwierzeDoTypWybiegu entity) throws SQLException {
+        update.setInt(1, entity.getIdZwierze());
+        update.setInt(2, entity.getIdWybieg());
+        update.setInt(3, entity.getId());
+
     }
 
     @Override
-    protected void setInsert(ZwierzeDoWybieg entity) throws SQLException {
-insert.setInt(1, entity.getIdZwierze());
-insert.setInt(2, entity.getIdWybieg());
+    protected void setInsert(ZwierzeDoTypWybiegu entity) throws SQLException {
+        insert.setInt(1, entity.getIdZwierze());
+        insert.setInt(2, entity.getIdWybieg());
     }
 
     @Override
@@ -84,13 +90,36 @@ insert.setInt(2, entity.getIdWybieg());
     }
 
     @Override
-    public void setDelete(ZwierzeDoWybieg entity) throws SQLException {
+    public void setDelete(ZwierzeDoTypWybiegu entity) throws SQLException {
         delete.setInt(1, entity.getIdZwierze());
         delete.setInt(2, entity.getIdWybieg());
     }
 
     @Override
     protected void insertNecessaryData() throws SQLException {
+    }
+
+    @Override
+    public List<TypWybiegu.RodzajWybiegu> getRodzajeWybieguDlaZwierze(int idZwierze) {
+        List<ZwierzeDoTypWybiegu> tempList = new ArrayList<>();
+        PreparedStatement getAllById;
+        try {
+            getAllById = connection.prepareCall("select * from " + tableName() + " where id_zwierze=?");
+            getAllById.setInt(1, idZwierze);
+            ResultSet rs = getAllById.executeQuery();
+            while (rs.next()) {
+                tempList.add(mapper.map(rs));
+            }
+            List<TypWybiegu.RodzajWybiegu> zwracanaLista = new ArrayList<>();
+            for (ZwierzeDoTypWybiegu en : tempList) {
+                zwracanaLista.add(TypWybiegu.RodzajWybiegu.getById(en.getIdWybieg()));
+            }
+            return zwracanaLista;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
     }
 
 }

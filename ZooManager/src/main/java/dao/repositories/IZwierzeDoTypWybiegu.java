@@ -5,16 +5,15 @@
  */
 package dao.repositories;
 
-import dao.mappers.ZwierzeDoTypJedzMapper;
-import dao.model.RodzajJedzenia;
-import dao.model.TypJedzenia;
-import dao.model.ZwierzeDoTypJedzenia;
+import dao.model.TypWybiegu;
 import java.util.List;
 
 /**
  *
  * @author TKK
  */
-public interface IZwierzeDoTypJedzenia {
-    public List <RodzajJedzenia> pobierzListeJedzeniaDlaZwierze (int id);
+public interface IZwierzeDoTypWybiegu {
+    
+    public List<TypWybiegu.RodzajWybiegu> getRodzajeWybieguDlaZwierze(int idZwierze);
+    
 }

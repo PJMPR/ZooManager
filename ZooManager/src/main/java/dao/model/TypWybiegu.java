@@ -13,11 +13,8 @@ public class TypWybiegu implements IHaveId {
 
     RodzajWybiegu rodzajWybiegu;
 
-    
-    
     public TypWybiegu() {
     }
-
 
     @Override
     public int getId() {
@@ -29,11 +26,20 @@ public class TypWybiegu implements IHaveId {
         KLATKA(1), ZAMKNIETY(2), OTWARTY(3);
         public int id;
 
-
         RodzajWybiegu(int value) {
             this.id = value;
         }
 
+        public static RodzajWybiegu getById(int j) {
+            for (RodzajWybiegu rw : RodzajWybiegu.values()) {
+                if (rw.id == j) {
+                    return rw;
+                }
+
+            }
+            return null;
+
+        }
     }
 
     public RodzajWybiegu getRodzajWybiegu() {

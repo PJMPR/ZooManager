@@ -6,6 +6,7 @@
 package dao;
 
 import dao.mappers.IMapResultSetIntoEntity;
+import dao.model.RodzajJedzenia;
 import dao.model.TypJedzenia;
 import dao.uow.IUnitOfWork;
 import java.sql.Connection;
@@ -68,7 +69,7 @@ public class TypJedzeniaRepository extends RepositoryBase<TypJedzenia> {
 
     @Override
     protected void insertNecessaryData() throws SQLException {
-        for (TypJedzenia.RodzajJedzenia rodzajJedzenia : TypJedzenia.RodzajJedzenia.values()) {
+        for (RodzajJedzenia rodzajJedzenia : RodzajJedzenia.values()) {
             add(new TypJedzenia(rodzajJedzenia));
         }
         getUnitWork().saveChanges();

@@ -18,7 +18,7 @@ public class Zwierze implements IHaveId {
     private static final int MAX_NAJEDZENIE = 100;
     private int tempoJedzenia;
     private Integer poziomNajedzenia;
-    private List<TypJedzenia.RodzajJedzenia> rodzajJedzenia;
+    private List<RodzajJedzenia> rodzajJedzenia;
     private List<TypWybiegu.RodzajWybiegu> rodzajWybiegu;
     private Integer idWybiegu;
 
@@ -40,7 +40,7 @@ public class Zwierze implements IHaveId {
         this.poziomNajedzenia = poziomNajedzenia;
     }
 
-    public void setRodzajJedzenia(List<TypJedzenia.RodzajJedzenia> rodzajJedzenia) {
+    public void setRodzajJedzenia(List<RodzajJedzenia> rodzajJedzenia) {
         this.rodzajJedzenia = rodzajJedzenia;
     }
 
@@ -64,7 +64,7 @@ public class Zwierze implements IHaveId {
         return tempoJedzenia;
     }
 
-    public List<TypJedzenia.RodzajJedzenia> getRodzajJedzenia() {
+    public List<RodzajJedzenia> getRodzajJedzenia() {
         return rodzajJedzenia;
     }
 
@@ -83,7 +83,7 @@ public class Zwierze implements IHaveId {
     private void pobierzListeTypWybiegu() {
     }
 
-    public boolean jedz(Integer ilosc, TypJedzenia.RodzajJedzenia jedzenie) {
+    public boolean jedz(Integer ilosc, RodzajJedzenia jedzenie) {
         // sprawdzam poziom najedzenia i rodzaj jedzenia
         if (poziomNajedzenia < MAX_NAJEDZENIE) {
             if (rodzajJedzenia.contains(jedzenie)) {
@@ -111,7 +111,7 @@ public class Zwierze implements IHaveId {
         return id;
     }
 
-    public Zwierze(Integer id, String nazwa, int tempoJedzenia, Integer poziomNajedzenia, List<TypJedzenia.RodzajJedzenia> rodzajJedzenia, List<TypWybiegu.RodzajWybiegu> rodzajWybiegu, Integer idWybiegu) {
+    public Zwierze(Integer id, String nazwa, int tempoJedzenia, Integer poziomNajedzenia, List<RodzajJedzenia> rodzajJedzenia, List<TypWybiegu.RodzajWybiegu> rodzajWybiegu, Integer idWybiegu) {
         this.id = id;
         this.nazwa = nazwa;
         this.tempoJedzenia = tempoJedzenia;

@@ -6,9 +6,10 @@
 package dao;
 
 import dao.mappers.IMapResultSetIntoEntity;
+import dao.model.RodzajJedzenia;
 import dao.model.TypJedzenia;
 import dao.model.ZwierzeDoTypJedzenia;
-import dao.model.ZwierzeDoWybieg;
+import dao.model.ZwierzeDoTypWybiegu;
 import dao.repositories.IZwierzeDoTypJedzenia;
 import dao.uow.IUnitOfWork;
 import java.sql.Connection;
@@ -90,7 +91,7 @@ public class ZwierzeDoTypJedzeniaRepository extends RepositoryBase<ZwierzeDoTypJ
     }
 
     @Override
-    public List<TypJedzenia.RodzajJedzenia> pobierzListeJedzeniaDlaZwierze(int id) {
+    public List<RodzajJedzenia> pobierzListeJedzeniaDlaZwierze(int id) {
         List<ZwierzeDoTypJedzenia> tempList = new ArrayList<>();
         PreparedStatement getAllById = null;
         try {
@@ -100,11 +101,11 @@ public class ZwierzeDoTypJedzeniaRepository extends RepositoryBase<ZwierzeDoTypJ
             while (rs.next()) {
                 tempList.add(mapper.map(rs));
             }
-            List<TypJedzenia.RodzajJedzenia> zwracanaLista = new ArrayList<TypJedzenia.RodzajJedzenia>();
+            List<RodzajJedzenia> zwracanaLista = new ArrayList<RodzajJedzenia>();
             for (ZwierzeDoTypJedzenia en : tempList) {
-                zwracanaLista.add(TypJedzenia.RodzajJedzenia.getById(en.getIdTypJedzenia()));
-
+                zwracanaLista.add(RodzajJedzenia.getById(en.getIdTypJedzenia()));
             }
+            return zwracanaLista;
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

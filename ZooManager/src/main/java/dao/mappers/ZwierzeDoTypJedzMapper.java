@@ -17,8 +17,9 @@ public class ZwierzeDoTypJedzMapper implements IMapResultSetIntoEntity<ZwierzeDo
 
     @Override
     public ZwierzeDoTypJedzenia map(ResultSet rs) throws SQLException {
-//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        return null;
+
+        return new ZwierzeDoTypJedzenia(rs.getInt("id"),rs.getInt("id_zwierze"),rs.getInt("id_typ_jedzenia") );
+        
     }
     
     

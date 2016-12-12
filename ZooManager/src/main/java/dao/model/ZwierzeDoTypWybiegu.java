@@ -9,7 +9,7 @@ package dao.model;
  *
  * @author TKK
  */
-public class ZwierzeDoWybieg implements IHaveId {
+public class ZwierzeDoTypWybiegu implements IHaveId {
 
     private Integer id;
     private Integer idZwierze;
@@ -26,6 +26,12 @@ public class ZwierzeDoWybieg implements IHaveId {
 
     public Integer getIdWybieg() {
         return idWybieg;
+    }
+
+    public ZwierzeDoTypWybiegu(Integer id, Integer idZwierze, Integer idWybieg) {
+        this.id = id;
+        this.idZwierze = idZwierze;
+        this.idWybieg = idWybieg;
     }
     
     

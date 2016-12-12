@@ -5,7 +5,7 @@
  */
 package dao.mappers;
 
-import dao.model.ZwierzeDoWybieg;
+import dao.model.ZwierzeDoTypWybiegu;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -13,12 +13,13 @@ import java.sql.SQLException;
  *
  * @author TKK
  */
-public class ZwierzeDoTypWybMapper implements IMapResultSetIntoEntity<ZwierzeDoWybieg>{
+public class ZwierzeDoTypWybMapper implements IMapResultSetIntoEntity<ZwierzeDoTypWybiegu>{
 
     @Override
-    public ZwierzeDoWybieg map(ResultSet rs) throws SQLException {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    return null;
+    public ZwierzeDoTypWybiegu map(ResultSet rs) throws SQLException {
+ZwierzeDoTypWybiegu mapper = new ZwierzeDoTypWybiegu(rs.getInt("id"),rs.getInt("id_zwierze"),rs.getInt("id_typ_wybiegu"));
+
+        return mapper;
     }
     
     

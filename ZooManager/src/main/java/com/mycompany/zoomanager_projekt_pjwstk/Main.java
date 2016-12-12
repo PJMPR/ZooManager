@@ -53,25 +53,25 @@ public class Main {
         ZwierzetaRepository zwierzeRepo = new ZwierzetaRepository(connection, new ZwierzeMapper(), new UnitOfWork(connection));
         PracownikRepository pracownikRepo = new PracownikRepository(connection, new PracownikMapper(), new UnitOfWork(connection));
             
+//        
+//        Wybieg wybieg1 = new Wybieg(1, 3, "1");
+//        Zwierze zwierze1 = new Zwierze(1, "Miau", 6, 100, null, null, 354);
+//        
+//        wybiegRepo.add(wybieg1);
+//        wybiegRepo.getUnitWork().saveChanges();
+//        zwierzeRepo.add(zwierze1);
+//        zwierzeRepo.getUnitWork().saveChanges();
         
-        Wybieg wybieg1 = new Wybieg(1, 3, "1");
-        Zwierze zwierze1 = new Zwierze(1, "Miau", 6, 100, null, null, 354);
         
-        wybiegRepo.add(wybieg1);
-        wybiegRepo.getUnitWork().saveChanges();
-        zwierzeRepo.add(zwierze1);
-        zwierzeRepo.getUnitWork().saveChanges();
-        
-        
-        Zwierze newZw1 = zwierzeRepo.get(3);
+        Zwierze newZw1 = zwierzeRepo.get(2);
         Zwierze newZw2 = newZw1;
         
-
-        //Zwierze zweirzeObiekt = new Zwierze();
-        
-       
-        //zwierzeRepo.add(zweirzeObiekt);
-        //zwierzeRepo.delete(zweirzeObiekt);
+//
+//        Zwierze zweirzeObiekt = new Zwierze();
+//        
+//       
+//        zwierzeRepo.add(zweirzeObiekt);
+//        zwierzeRepo.delete(zweirzeObiekt);
 
         zwierzeRepo.getUnitWork().saveChanges();
         
