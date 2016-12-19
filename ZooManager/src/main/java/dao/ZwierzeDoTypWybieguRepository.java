@@ -100,7 +100,7 @@ public class ZwierzeDoTypWybieguRepository extends RepositoryBase<ZwierzeDoTypWy
     }
 
     @Override
-    public List<TypWybiegu.RodzajWybiegu> getRodzajeWybieguDlaZwierze(int idZwierze) {
+    public List<ZwierzeDoTypWybiegu> getRodzajeWybieguDlaZwierze(int idZwierze) {
         List<ZwierzeDoTypWybiegu> tempList = new ArrayList<>();
         PreparedStatement getAllById;
         try {
@@ -110,11 +110,8 @@ public class ZwierzeDoTypWybieguRepository extends RepositoryBase<ZwierzeDoTypWy
             while (rs.next()) {
                 tempList.add(mapper.map(rs));
             }
-            List<TypWybiegu.RodzajWybiegu> zwracanaLista = new ArrayList<>();
-            for (ZwierzeDoTypWybiegu en : tempList) {
-                zwracanaLista.add(TypWybiegu.RodzajWybiegu.getById(en.getIdWybieg()));
-            }
-            return zwracanaLista;
+            
+            return tempList;
         } catch (SQLException e) {
             e.printStackTrace();
         }

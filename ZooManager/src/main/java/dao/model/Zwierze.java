@@ -18,8 +18,8 @@ public class Zwierze implements IHaveId {
     private static final int MAX_NAJEDZENIE = 100;
     private int tempoJedzenia;
     private Integer poziomNajedzenia;
-    private List<RodzajJedzenia> rodzajJedzenia;
-    private List<TypWybiegu.RodzajWybiegu> rodzajWybiegu;
+    private List<ZwierzeDoTypJedzenia> rodzajJedzenia;
+    private List<ZwierzeDoTypWybiegu> rodzajWybiegu;
     private Integer idWybiegu;
 
    
@@ -40,11 +40,11 @@ public class Zwierze implements IHaveId {
         this.poziomNajedzenia = poziomNajedzenia;
     }
 
-    public void setRodzajJedzenia(List<RodzajJedzenia> rodzajJedzenia) {
+    public void setRodzajJedzenia(List<ZwierzeDoTypJedzenia> rodzajJedzenia) {
         this.rodzajJedzenia = rodzajJedzenia;
     }
 
-    public void setRodzajWybiegu(List<TypWybiegu.RodzajWybiegu> rodzajWybiegu) {
+    public void setRodzajWybiegu(List<ZwierzeDoTypWybiegu> rodzajWybiegu) {
         this.rodzajWybiegu = rodzajWybiegu;
     }
 
@@ -64,11 +64,11 @@ public class Zwierze implements IHaveId {
         return tempoJedzenia;
     }
 
-    public List<RodzajJedzenia> getRodzajJedzenia() {
+    public List<ZwierzeDoTypJedzenia> getRodzajJedzenia() {
         return rodzajJedzenia;
     }
 
-    public List<TypWybiegu.RodzajWybiegu> getRodzajWybiegu() {
+    public List<ZwierzeDoTypWybiegu> getRodzajWybiegu() {
         return rodzajWybiegu;
     }
 
@@ -111,7 +111,7 @@ public class Zwierze implements IHaveId {
         return id;
     }
 
-    public Zwierze(Integer id, String nazwa, int tempoJedzenia, Integer poziomNajedzenia, List<RodzajJedzenia> rodzajJedzenia, List<TypWybiegu.RodzajWybiegu> rodzajWybiegu, Integer idWybiegu) {
+    public Zwierze(Integer id, String nazwa, int tempoJedzenia, Integer poziomNajedzenia, List<ZwierzeDoTypJedzenia> rodzajJedzenia, List<ZwierzeDoTypWybiegu> rodzajWybiegu, Integer idWybiegu) {
         this.id = id;
         this.nazwa = nazwa;
         this.tempoJedzenia = tempoJedzenia;

@@ -56,7 +56,6 @@ public class ZwierzeDoTypJedzeniaRepository extends RepositoryBase<ZwierzeDoTypJ
     protected void setInsert(ZwierzeDoTypJedzenia entity) throws SQLException {
         insert.setInt(1, entity.getIdZwierze());
         insert.setInt(2, entity.getIdTypJedzenia());
-        insert.setInt(3, entity.getId());
     }
 
     @Override
@@ -91,7 +90,7 @@ public class ZwierzeDoTypJedzeniaRepository extends RepositoryBase<ZwierzeDoTypJ
     }
 
     @Override
-    public List<RodzajJedzenia> pobierzListeJedzeniaDlaZwierze(int id) {
+    public List<ZwierzeDoTypJedzenia> pobierzListeJedzeniaDlaZwierze(int id) {
         List<ZwierzeDoTypJedzenia> tempList = new ArrayList<>();
         PreparedStatement getAllById = null;
         try {
@@ -101,11 +100,11 @@ public class ZwierzeDoTypJedzeniaRepository extends RepositoryBase<ZwierzeDoTypJ
             while (rs.next()) {
                 tempList.add(mapper.map(rs));
             }
-            List<RodzajJedzenia> zwracanaLista = new ArrayList<RodzajJedzenia>();
-            for (ZwierzeDoTypJedzenia en : tempList) {
-                zwracanaLista.add(RodzajJedzenia.getById(en.getIdTypJedzenia()));
-            }
-            return zwracanaLista;
+//            List<RodzajJedzenia> zwracanaLista = new ArrayList<RodzajJedzenia>();
+//            for (ZwierzeDoTypJedzenia en : tempList) {
+//                zwracanaLista.add(RodzajJedzenia.getById(en.getIdTypJedzenia()));
+//            }
+            return tempList;
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

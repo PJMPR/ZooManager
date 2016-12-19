@@ -117,6 +117,7 @@ public abstract class RepositoryBase<TEntity extends IHaveId> implements
         try {
             setInsert((TEntity) entity.getEntity());
             insert.executeUpdate();
+            insertPlus((TEntity) entity.getEntity());
         } catch (SQLIntegrityConstraintViolationException ex) {
             //obsluga bledu powtarzajacego sie PK
             System.err.println("dao.RepositoryBase.persistAdd()");
@@ -193,4 +194,5 @@ public abstract class RepositoryBase<TEntity extends IHaveId> implements
     protected void addMoreData(TEntity entity){
         //Nothing to do
     }
+    protected void insertPlus (TEntity entity) {};
 }

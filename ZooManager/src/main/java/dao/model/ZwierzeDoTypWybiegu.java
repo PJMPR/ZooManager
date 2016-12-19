@@ -14,7 +14,7 @@ public class ZwierzeDoTypWybiegu implements IHaveId {
     private Integer id;
     private Integer idZwierze;
     private Integer idWybieg;
-
+    private TypWybiegu.RodzajWybiegu rodzajWybiegu;
     @Override
     public int getId() {
         return id;
@@ -32,6 +32,11 @@ public class ZwierzeDoTypWybiegu implements IHaveId {
         this.id = id;
         this.idZwierze = idZwierze;
         this.idWybieg = idWybieg;
+        rodzajWybiegu=TypWybiegu.RodzajWybiegu.getById(idWybieg);
+    }
+
+    public TypWybiegu.RodzajWybiegu getRodzajWybiegu() {
+        return rodzajWybiegu;
     }
     
     

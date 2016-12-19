@@ -6,6 +6,7 @@
 package dao.repositories;
 
 import dao.model.TypWybiegu;
+import dao.model.ZwierzeDoTypWybiegu;
 import java.util.List;
 
 /**
@@ -14,6 +15,6 @@ import java.util.List;
  */
 public interface IZwierzeDoTypWybiegu {
     
-    public List<TypWybiegu.RodzajWybiegu> getRodzajeWybieguDlaZwierze(int idZwierze);
+    public List<ZwierzeDoTypWybiegu> getRodzajeWybieguDlaZwierze(int idZwierze);
     
 }

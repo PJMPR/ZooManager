@@ -16,5 +16,5 @@ import java.util.List;
  * @author TKK
  */
 public interface IZwierzeDoTypJedzenia {
-    public List <RodzajJedzenia> pobierzListeJedzeniaDlaZwierze (int id);
+    public List <ZwierzeDoTypJedzenia> pobierzListeJedzeniaDlaZwierze (int id);
 }
