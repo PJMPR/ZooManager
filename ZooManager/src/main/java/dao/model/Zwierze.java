@@ -5,7 +5,11 @@
  */
 package dao.model;
 
+import dao.RepositoryCatalogue;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,13 +20,11 @@ public class Zwierze implements IHaveId {
     private Integer id;
     private String nazwa;
     private static final int MAX_NAJEDZENIE = 100;
-    private int tempoJedzenia;
+    private Integer tempoJedzenia;
     private Integer poziomNajedzenia;
     private List<ZwierzeDoTypJedzenia> rodzajJedzenia;
     private List<ZwierzeDoTypWybiegu> rodzajWybiegu;
     private Integer idWybiegu;
-
-   
 
     public void setId(Integer id) {
         this.id = id;
@@ -83,26 +85,21 @@ public class Zwierze implements IHaveId {
     private void pobierzListeTypWybiegu() {
     }
 
-    public boolean jedz(Integer ilosc, RodzajJedzenia jedzenie) {
+    public boolean jedz(RodzajJedzenia jedzenie) {
         // sprawdzam poziom najedzenia i rodzaj jedzenia
         if (poziomNajedzenia < MAX_NAJEDZENIE) {
             if (rodzajJedzenia.contains(jedzenie)) {
 //                poziomNajedzenia = (poziomNajedzenia + ilosc)/(MAX_NAJEDZENIE+1);
-                if (poziomNajedzenia + ilosc > MAX_NAJEDZENIE) {
-                    poziomNajedzenia = MAX_NAJEDZENIE;
-                } else {
-                    poziomNajedzenia = poziomNajedzenia + ilosc;
-                }
+
+                poziomNajedzenia = MAX_NAJEDZENIE;
+
                 return true;
             }
 
         }
+
         return false;
 
-    }
-
-    public double getPoziomNajedzenia() {
-        return poziomNajedzenia / MAX_NAJEDZENIE;
     }
 
     @Override
@@ -119,10 +116,127 @@ public class Zwierze implements IHaveId {
         this.rodzajJedzenia = rodzajJedzenia;
         this.rodzajWybiegu = rodzajWybiegu;
         this.idWybiegu = idWybiegu;
+        glodniej();
+        niszczWybieg();
+    }
+
+    private Zwierze getThisZwierze() {
+        return this;
     }
 
     public Zwierze() {
+        glodniej();
+        niszczWybieg();
+    }
+
+    public boolean zwierzeZainicjowane() {
+        if (id == null
+                || nazwa == null
+                || tempoJedzenia == null
+                || poziomNajedzenia == null
+                || rodzajJedzenia == null
+                ||  rodzajWybiegu == null) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
+    public void glodniej() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (!zwierzeZainicjowane()) {
+                    try {
+                        Thread.sleep(300);
+                    } catch (InterruptedException r) {
+                        System.err.println("Zwierze niezainicjowane");
+                        r.printStackTrace();
+                    }
+                }
+
+                while (true) {
+                    System.err.println("Zwierze glodnieje");
+                    try {
+                        System.err.println("Odpalam funkcje glodnienia dla zw "+getThisZwierze().getId());
+                        Thread.sleep(3000);
+
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Zwierze.class
+                                .getName()).log(Level.SEVERE, null, ex);
+                    }
+                    poziomNajedzenia = poziomNajedzenia - tempoJedzenia;
+                    System.out.println(nazwa + " poziom najedzenia " + poziomNajedzenia);
+                    RepositoryCatalogue rp = null;
+                    try {
+                        rp = new RepositoryCatalogue();
+                        rp.zwierzetaRepository().update(getThisZwierze());
+                        rp.save();
+                        rp.close();
+                        System.err.println("Zwierze " +getThisZwierze().id +"zgłodniało,stan: "+getThisZwierze().poziomNajedzenia);
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        }
+        ).start();
+
+    }
+
+    public void niszczWybieg() {
+
+        Runnable myRunnable = new Runnable() {
+            @Override
+            public void run() {
+                while (!zwierzeZainicjowane()) {
+                    try {
+                        Thread.sleep(300);
+
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Zwierze.class
+                                .getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                while (true) {
+                    try {
+                        Thread.sleep(10000);
+                        if (idWybiegu != null) {
+                            RepositoryCatalogue rp = new RepositoryCatalogue();
+                            Wybieg wb = rp.wybiegRepository().get(idWybiegu);
+                            if (wb.getStanWybiegu() == Wybieg.STAN_WYBIEGU.czysty) {
+                                wb.setStanWybiegu(Wybieg.STAN_WYBIEGU.brudny);
+                                rp.wybiegRepository().update(wb);
+                                rp.save();
+
+                            }
+                            rp.close();
+
+                        }
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Zwierze.class
+                                .getName()).log(Level.SEVERE, null, ex);
+
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Zwierze.class
+                                .getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        };
+
+        Thread jeden= new Thread(myRunnable);
+        jeden.start();
+    }
+
+    public Integer getPoziomNajedzenia() {
+        return poziomNajedzenia;
     }
     
-
+    public boolean czyGlodny (){
+        return poziomNajedzenia < MAX_NAJEDZENIE;
+    }
+    
+    
 }

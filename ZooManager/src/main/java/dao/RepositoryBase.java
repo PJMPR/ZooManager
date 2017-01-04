@@ -48,7 +48,7 @@ public abstract class RepositoryBase<TEntity extends IHaveId> implements
             //funkcja dla tabeli slownikowych (z naszych enum)
         insertNecessaryData();
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
         }
     }
 
@@ -120,10 +120,10 @@ public abstract class RepositoryBase<TEntity extends IHaveId> implements
             insertPlus((TEntity) entity.getEntity());
         } catch (SQLIntegrityConstraintViolationException ex) {
             //obsluga bledu powtarzajacego sie PK
-            System.err.println("dao.RepositoryBase.persistAdd()");
-             System.err.println("Tutaj bład bo inserty do tabeli enumow");
-            System.err.println(this.getClass());
-            System.err.println(((TEntity) entity.getEntity()).getId());
+//            System.err.println("dao.RepositoryBase.persistAdd()");
+//             System.err.println("Tutaj bład bo inserty do tabeli enumow");
+//            System.err.println(this.getClass());
+//            System.err.println(((TEntity) entity.getEntity()).getId());
         } catch (SQLException sqexp){
             sqexp.printStackTrace();
         }

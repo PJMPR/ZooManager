@@ -13,15 +13,19 @@ import dao.model.IHaveId;
  */
 public class Wybieg implements IHaveId {
 
+    public enum STAN_WYBIEGU{
+        czysty, brudny;
+    }
+    
     private Integer id;
     private Integer idRodzajWybiegu;
-    private String stanWybiegu;
+    private STAN_WYBIEGU stanWybiegu;
 
     public void setIdRodzajWybiegu(Integer idRodzajWybiegu) {
         this.idRodzajWybiegu = idRodzajWybiegu;
     }
 
-    public void setStanWybiegu(String stanWybiegu) {
+    public void setStanWybiegu(STAN_WYBIEGU stanWybiegu) {
         this.stanWybiegu = stanWybiegu;
     }
 
@@ -52,14 +56,22 @@ public class Wybieg implements IHaveId {
         return idRodzajWybiegu;
     }
 
-    public String getStanWybiegu() {
+    public STAN_WYBIEGU getStanWybiegu() {
         return stanWybiegu;
     }
 
-    public Wybieg(Integer id, Integer idRodzajWybiegu, String stanWybiegu) {
+    public Wybieg(Integer id, Integer idRodzajWybiegu, STAN_WYBIEGU stanWybiegu) {
         this.id = id;
         this.idRodzajWybiegu = idRodzajWybiegu;
         this.stanWybiegu = stanWybiegu;
+    }
+    
+    public boolean czyWymagaSprzatania(){
+        return stanWybiegu != STAN_WYBIEGU.czysty;
+    }
+    
+    public void sprzatajWybieg(){
+        stanWybiegu = STAN_WYBIEGU.czysty;
     }
     
     

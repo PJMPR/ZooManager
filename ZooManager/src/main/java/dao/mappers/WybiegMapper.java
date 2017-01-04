@@ -21,6 +21,8 @@ public class WybiegMapper implements IMapResultSetIntoEntity<Wybieg> {
 
         wybieg.setId(rs.getInt("id"));
         wybieg.setIdRodzajWybiegu(rs.getInt("id_typ_wybiegu"));
+        Wybieg.STAN_WYBIEGU stanWybiegu = Wybieg.STAN_WYBIEGU.valueOf(rs.getString("stan_wybiegu"));
+        wybieg.setStanWybiegu(stanWybiegu);
         return wybieg;
     }
 
