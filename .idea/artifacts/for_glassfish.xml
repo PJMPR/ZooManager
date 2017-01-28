@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="ear" build-on-make="true" name="for_glassfish">
+    <output-path>$PROJECT_DIR$/classes/artifacts/for_glassfish</output-path>
+    <root id="archive" name="for_glassfish.ear">
+      <element id="directory" name="lib">
+        <element id="archive" name="zoomanager_projekt_pjwstk.jar">
+          <element id="module-output" name="zoomanager_projekt_pjwstk" />
+        </element>
+        <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.9.1" />
+        <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.1" />
+        <element id="library" level="project" name="Maven: javax:javaee-web-api:7.0" />
+        <element id="library" level="project" name="Maven: net.sf.dozer:dozer:5.5.1" />
+        <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.2.1" />
+        <element id="library" level="project" name="Maven: org.hsqldb:hsqldb:2.3.4" />
+        <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.5" />
+        <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.5" />
+      </element>
+      <element id="javaee-facet-resources" facet="zoomanager_projekt_pjwstk/web/Web" />
+    </root>
+  </artifact>
+</component>
